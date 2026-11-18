@@ -35,7 +35,8 @@ pages disappear on rebuild. `site/` is disposable and ignored by Git.
 - `src/*.md`: posts. Set `title`, ISO `date` (`YYYY-MM-DD`), and `slug` in YAML
   frontmatter. Keep slugs URL-safe (letters, digits, hyphens).
 - `themes/nothr/style.css`: the only active stylesheet, using self-hosted Iosevka
-  and compatibility rules hiding BSSG's duplicate titles and metadata.
+  and compatibility rules hiding duplicate headings while keeping post titles
+  and publication dates visible.
 - `templates/header.html`, `templates/footer.html`: original HTML layout in
   BSSG's template format.
 - `static/`: public assets only; its contents are copied into the output root.

@@ -240,11 +240,26 @@ footer {
   font-size: 0.9em;
 }
 
-/* Preserve Markdown headings without BSSG's duplicate title and metadata. */
+/* Pages use their Markdown heading. Posts show BSSG's title and date;
+   only the repeated Markdown title (which has an id) is hidden. */
 main > article.page > h1,
-main > article.post > h1,
-.page-meta {
+main > article.page > .page-meta,
+main > article.post > h1[id] {
   display: none;
+}
+
+main > article.post > h1:first-child {
+  margin-bottom: 0.5rem;
+}
+
+main > article.post > .page-meta {
+  margin-bottom: 1.75rem;
+  color: #b8c0c5;
+  font-size: 0.9em;
+}
+
+main > article.post > .page-meta > .meta {
+  margin: 0;
 }
 
 @media (max-width: 480px) {
