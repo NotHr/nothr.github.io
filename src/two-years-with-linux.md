@@ -2,6 +2,7 @@
 title: "Two good years of using Linux"
 date: "2025-08-16"
 slug: two-years-with-linux
+tags: linux, arch-linux, self-hosting
 description: "Reflections on two years of daily driving Arch."
 ---
 

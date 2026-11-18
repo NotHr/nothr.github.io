@@ -2,6 +2,7 @@
 title: "How NPM broke my server"
 date: "2024-10-20"
 slug: how-npm-broke-my-server
+tags: self-hosting, nodejs
 description: "NPM ate all the RAM on my 1GB droplet. pnpm saved the day."
 ---
 

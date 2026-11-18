@@ -2,6 +2,7 @@
 title: "The Ente Treasure Hunt — Write-Up!"
 date: "2026-04-07"
 slug: ente-treasure-hunt-writeup
+tags: ente, self-hosting, open-source
 description: "How I solved Ente's hunt using metadata, app lock timeouts, and a one-character typo."
 ---
 

@@ -2,6 +2,7 @@
 title: "One year of using Linux"
 date: "2024-02-28"
 slug: 1-year-of-linux
+tags: linux, arch-linux
 ---
 
 # One Year of Using Linux

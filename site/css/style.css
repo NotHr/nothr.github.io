@@ -225,6 +225,37 @@ figure:has(img[alt="pfp"]) figcaption {
   text-align: center;
 }
 
+.tags,
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+article.post > .tags {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #363c40;
+}
+
+a.tag,
+.tags-list > a {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid #465258;
+  border-radius: 999px;
+  background: #20262b;
+  color: #8cddd3;
+  font-size: 0.9em;
+  text-decoration: none;
+}
+
+a.tag:hover,
+.tags-list > a:hover {
+  border-color: #8cddd3;
+  background: #29343a;
+}
+
 hr {
   border: 0;
   border-top: 1px solid #363c40;

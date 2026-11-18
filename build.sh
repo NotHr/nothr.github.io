@@ -60,6 +60,28 @@ done < <(find src -type f -name '*.md' -print0) | sort -r > "$work/posts.tsv"
         bash ./bssg.sh build --config "$ROOT/config.sh.local"
 )
 
+# Keep generated tag/post navigation on the current host, including preview
+# deployments. Feeds and canonical URLs retain the configured public domain.
+site_url=$(source "$ROOT/config.sh.local"; printf '%s' "${SITE_URL%/}")
+while IFS= read -r -d '' html; do
+    awk -v site_url="$site_url" '
+        function replace_literal(text, old, new, pos, result) {
+            while ((pos = index(text, old)) > 0) {
+                result = result substr(text, 1, pos - 1) new
+                text = substr(text, pos + length(old))
+            }
+            return result text
+        }
+        /rel="canonical"/ { print; next }
+        {
+            $0 = replace_literal($0, "href=\"" site_url "/tags/", "href=\"/tags/")
+            $0 = replace_literal($0, "href=\"" site_url "/blogs/", "href=\"/blogs/")
+            print
+        }
+    ' "$html" > "$work/navigation.html"
+    mv -- "$work/navigation.html" "$html"
+done < <(find "$work/output" -type f -name '*.html' -print0)
+
 # BSSG currently labels a custom homepage "Home"; preserve our original title.
 awk '
     /<title>Home<\/title>/ { sub(/<title>Home<\/title>/, "<title>Harshith reddy - nothr</title>") }

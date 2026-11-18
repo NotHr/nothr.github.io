@@ -33,7 +33,9 @@ pages disappear on rebuild. `site/` is disposable and ignored by Git.
 
 - `pages/*.md`: home, now, links, and tools.
 - `src/*.md`: posts. Set `title`, ISO `date` (`YYYY-MM-DD`), and `slug` in YAML
-  frontmatter. Keep slugs URL-safe (letters, digits, hyphens).
+  frontmatter. Add comma-separated topics, e.g. `tags: linux, self-hosting`.
+  BSSG generates `/tags/` and a page for each tag; post tag links appear below
+  the content. Keep slugs and tags URL-safe (letters, digits, hyphens).
 - `themes/nothr/style.css`: the only active stylesheet, using self-hosted Iosevka
   and compatibility rules hiding duplicate headings while keeping post titles
   and publication dates visible.

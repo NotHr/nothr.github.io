@@ -2,6 +2,7 @@
 title: "Switching back to Open source"
 date: "2023-11-12"
 slug: switching-back-to-open-source
+tags: linux, open-source
 ---
 
 # Switching back to Open Source
