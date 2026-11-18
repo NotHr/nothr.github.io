@@ -49,7 +49,7 @@ The folder name `static` is **not** part of a public URL:
 | --- | --- |
 | `static/images/profile.jpg` | `/images/profile.jpg` |
 | `static/images/blog-profile.jpg` | `/images/blog-profile.jpg` |
-| `static/fonts/iosevka/Iosevka-Regular.woff2` | `/fonts/iosevka/Iosevka-Regular.woff2` |
+| `static/fonts/iosevka/Iosevka-Regular-latin-v1.woff2` | `/fonts/iosevka/Iosevka-Regular-latin-v1.woff2` |
 | `static/resume.pdf` | `/resume.pdf` |
 
 Put new pictures in `static/images/`. Edit CSS only in
@@ -61,6 +61,22 @@ visitors do not contact a font CDN. It is free/open-source under the SIL Open
 Font License 1.1, included at `static/fonts/iosevka/LICENSE.md`.
 Font binaries come from the upstream
 [PkgWebFont-Iosevka-34.9.1.zip release](https://github.com/be5invis/Iosevka/releases/tag/v34.9.1).
+
+The bundled fonts are Latin-focused subsets (~43–48 KB each), retaining Latin
+and extended Latin, punctuation, and basic arrows. Other scripts use system
+fallback fonts. To reproduce from the upstream WOFF2 files, use FontTools with
+Brotli support (`pip install 'fonttools[woff]'`):
+
+```sh
+pyftsubset Iosevka-Regular.woff2 \
+  --unicodes='U+0000-024F,U+1E00-1EFF,U+2000-206F,U+20AC,U+2190-2199,U+FFFD' \
+  --flavor=woff2 --output-file=Iosevka-Regular-latin-v1.woff2
+```
+
+Repeat for Bold, Italic, and BoldItalic. `static/_headers` gives fonts a one-year
+immutable browser cache on Cloudflare Workers Static Assets and Pages; the regular
+font is preloaded. When replacing a font, increment its filename version and
+update both the stylesheet and preload URL. HTML and CSS are not cached immutably.
 
 The blog-list page is generated newest-first from `src/`; do not create a
 handwritten `pages/blogs.md`. Existing Markdown body text is preserved.

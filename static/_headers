@@ -1,0 +1,4 @@
+# Cloudflare Workers Static Assets and Pages read this from the asset root.
+# Font filenames are versioned: use a new version when changing their contents.
+/fonts/iosevka/*
+  Cache-Control: public, max-age=31536000, immutable
