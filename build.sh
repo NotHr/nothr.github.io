@@ -1,43 +1,90 @@
 #!/usr/bin/env bash
-clear
+# Build with upstream BSSG, then add aliases for the original site's .html URLs.
+set -euo pipefail
+export LC_ALL=C
+ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+cd "$ROOT"
 
-echo Genrating blog List
-echo "---
-title: Blogs | Harshith reddy - nothr
----
+if [[ ! -f vendor/bssg/bssg.sh ]]; then
+    printf 'Initialize BSSG first: make init\n' >&2
+    exit 1
+fi
+command -v pandoc >/dev/null 2>&1 || {
+    printf 'Error: install Pandoc to render Markdown.\n' >&2
+    exit 1
+}
 
-# List of Blogs" > blogs.md
+# A failed build must not replace the last successful site.
+work=$(mktemp -d "$ROOT/build-tmp.XXXXXX")
+trap 'rm -rf -- "$work"' EXIT
+mkdir -p "$work/pages"
+cp -a pages/. "$work/pages/"
 
-for f in "./blogs"/*.md; do
-    title=$(cat $f | grep -Po '(").*' | sed 's/"//g' | head -n 1)
-    date=$(cat $f | grep -Po '(").*' | sed 's/"//g' | head -n 2 | tail -n 1)    
-    link="${f%.md}.html"
-    echo "- \`$date\` - [$title](/$link)" >> blogs.md
-done
+# BSSG supports single-line YAML frontmatter. Never evaluate content as shell.
+metadata() {
+    awk -v key="$1" '
+        NR == 1 { if ($0 != "---") exit; next }
+        $0 == "---" { exit }
+        index($0, key ":") == 1 {
+            sub(/^[^:]*:[[:space:]]*/, "")
+            sub(/[[:space:]]*$/, "")
+            if ($0 ~ /^".*"$/ || $0 ~ /^\047.*\047$/)
+                $0 = substr($0, 2, length($0) - 2)
+            print; exit
+        }
+    ' "$2"
+}
 
-echo Building Index
+# Supply the original blog-list page to BSSG alongside the handwritten pages.
+# ISO dates in frontmatter allow newest-first lexical sorting.
+while IFS= read -r -d '' post; do
+    title=$(metadata title "$post")
+    date=$(metadata date "$post")
+    slug=$(metadata slug "$post")
+    [[ -n $slug ]] || slug=$(basename -- "$post" .md)
+    printf '%s\t%s\t%s\n' "$date" "$slug" "$title"
+done < <(find src -type f -name '*.md' -print0) | sort -r > "$work/posts.tsv"
+{
+    printf '%s\n' '---' 'title: Blogs | Harshith reddy - nothr' 'slug: blogs' '---' '' '# List of Blogs' ''
+    while IFS=$'\t' read -r date slug title; do
+        display_date=$(date -u -d "$date" '+%b %d, %Y')
+        printf -- '- `%s` - [%s](/blogs/%s.html)\n' "$display_date" "$title" "$slug"
+    done < "$work/posts.tsv"
+} > "$work/pages/blogs.md"
 
-for f in "./"/*.md; do
-    pandoc -s \
-    --template template.html \
-    -f markdown \
-    -t html \
-    $f > "${f%.md}.html"
-done
+(
+    cd "$ROOT/vendor/bssg"
+    BSSG_BUILD_PAGES="$work/pages" \
+    BSSG_BUILD_OUTPUT="$work/output" \
+    BSSG_BUILD_CACHE="$work/cache" \
+        bash ./bssg.sh build --config "$ROOT/config.sh.local"
+)
 
+# BSSG currently labels a custom homepage "Home"; preserve our original title.
+awk '
+    /<title>Home<\/title>/ { sub(/<title>Home<\/title>/, "<title>Harshith reddy - nothr</title>") }
+    { print }
+' "$work/output/index.html" > "$work/home.html"
+mv -- "$work/home.html" "$work/output/index.html"
 
+# BSSG publishes clean URLs. Keep those for feeds/canonicals, and retain .html
+# aliases so all existing navigation links and external bookmarks still work.
+while IFS= read -r -d '' page; do
+    slug=$(metadata slug "$page")
+    [[ $slug == index ]] && continue
+    cp -- "$work/output/$slug/index.html" "$work/output/$slug.html"
+done < <(find "$work/pages" -type f -name '*.md' -print0)
+while IFS=$'\t' read -r date slug title; do
+    cp -- "$work/output/blogs/$slug/index.html" "$work/output/blogs/$slug.html"
+done < "$work/posts.tsv"
 
-echo Building blogs
-
-for f in "./blogs"/*.md; do
-    pandoc -s \
-    --template template.html \
-    -f markdown \
-    -t html \
-    $f > "${f%.md}.html"
-done
-
-echo Moving to site 
-
-find . -maxdepth 1 -type f ! -name 'template.html' -name '*.html' -exec mv {} site/ \;
-mv blogs/*.html site/blogs/
+if [[ -e site || -L site ]]; then
+    mv -- site "$work/previous-site"
+fi
+if ! mv -- "$work/output" site; then
+    if [[ -e "$work/previous-site" || -L "$work/previous-site" ]]; then
+        mv -- "$work/previous-site" site
+    fi
+    exit 1
+fi
+printf 'Built site/ with BSSG successfully.\n'

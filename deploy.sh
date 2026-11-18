@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-clear
-echo Uploading to vps
-rsync -rtvzlP site/ root@nothr.in:/var/www/site
-clear
-echo Uploaded
+# Compatibility entry point; Make owns the build and deployment workflow.
+set -euo pipefail
+ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+exec make -C "$ROOT" deploy "$@"

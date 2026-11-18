@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Site-specific configuration; BSSG itself lives in vendor/bssg.
+SITE_ROOT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+SRC_DIR="$SITE_ROOT/src"
+PAGES_DIR="${BSSG_BUILD_PAGES:-$SITE_ROOT/pages}"
+OUTPUT_DIR="${BSSG_BUILD_OUTPUT:-$SITE_ROOT/site}"
+STATIC_DIR="$SITE_ROOT/static"
+TEMPLATES_DIR="$SITE_ROOT/templates"
+THEMES_DIR="$SITE_ROOT/themes"
+DRAFTS_DIR="$SITE_ROOT/drafts"
+CACHE_DIR="${BSSG_BUILD_CACHE:-$SITE_ROOT/.bssg_cache}"
+THEME="nothr"
+
+SITE_TITLE="Harshith reddy - nothr"
+SITE_DESCRIPTION="A man with binary answer trying to be a constant rather being a variable"
+SITE_URL="https://nothr.in"
+AUTHOR_NAME="Harshith reddy"
+AUTHOR_EMAIL="harshith@nothr.in"
+SITE_LANG="en"
+MARKDOWN_PROCESSOR="pandoc"
+BUILD_MODE="normal"
+CLEAN_OUTPUT=true
+DATE_FORMAT="%b %d, %Y"
+TIMEZONE="GMT"
+URL_SLUG_FORMAT="blogs/slug"
+PAGE_URL_FORMAT="slug"
+SHOW_READING_TIME=false
+SHOW_HEADER_MENU=false
+ENABLE_ARCHIVES=false
+ENABLE_AUTHOR_PAGES=false
+ENABLE_TAG_RSS=false
+ENABLE_RELATED_POSTS=false
+DEPLOY_AFTER_BUILD=false

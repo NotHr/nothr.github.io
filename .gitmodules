@@ -1,0 +1,3 @@
+[submodule "vendor/bssg"]
+	path = vendor/bssg
+	url = https://brew.bsd.cafe/stefano/BSSG.git
