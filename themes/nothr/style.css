@@ -240,6 +240,14 @@ footer {
   font-size: 0.9em;
 }
 
+footer p {
+  margin: 0;
+}
+
+footer p + p {
+  margin-top: 0.5rem;
+}
+
 /* Pages use their Markdown heading. Posts show BSSG's title and date;
    only the repeated Markdown title (which has an id) is hidden. */
 main > article.page > h1,
