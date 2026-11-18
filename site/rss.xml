@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+    <title>Harshith reddy - nothr - RSS Feed</title>
+    <link>https://nothr.in/</link>
+    <description>A man with binary answer trying to be a constant rather being a variable</description>
+    <language>en</language>
+    <lastBuildDate>Wed, 18 Nov 2026 04:30:22 GMT</lastBuildDate>
+    <atom:link href="https://nothr.in/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+        <title>The Ente Treasure Hunt — Write-Up!</title>
+        <link>https://nothr.in/blogs/ente-treasure-hunt-writeup/</link>
+        <guid isPermaLink="true">https://nothr.in/blogs/ente-treasure-hunt-writeup/</guid>
+        <pubDate>Tue, 07 Apr 2026 00:00:00 GMT</pubDate>
+        <atom:updated>2026-04-07T00:00:00+00:00</atom:updated>
+        <description><![CDATA[How I solved Ente's hunt using metadata, app lock timeouts, and a one-character typo.]]></description>
+        
+        <dc:creator>Harshith reddy (harshith@nothr.in)</dc:creator>
+    </item>
+    <item>
+        <title>Two good years of using Linux</title>
+        <link>https://nothr.in/blogs/two-years-with-linux/</link>
+        <guid isPermaLink="true">https://nothr.in/blogs/two-years-with-linux/</guid>
+        <pubDate>Sat, 16 Aug 2025 00:00:00 GMT</pubDate>
+        <atom:updated>2025-08-16T00:00:00+00:00</atom:updated>
+        <description><![CDATA[Reflections on two years of daily driving Arch.]]></description>
+        
+        <dc:creator>Harshith reddy (harshith@nothr.in)</dc:creator>
+    </item>
+    <item>
+        <title>How NPM broke my server</title>
+        <link>https://nothr.in/blogs/how-npm-broke-my-server/</link>
+        <guid isPermaLink="true">https://nothr.in/blogs/how-npm-broke-my-server/</guid>
+        <pubDate>Sun, 20 Oct 2024 00:00:00 GMT</pubDate>
+        <atom:updated>2024-10-20T00:00:00+00:00</atom:updated>
+        <description><![CDATA[NPM ate all the RAM on my 1GB droplet. pnpm saved the day.]]></description>
+        
+        <dc:creator>Harshith reddy (harshith@nothr.in)</dc:creator>
+    </item>
+    <item>
+        <title>One year of using Linux</title>
+        <link>https://nothr.in/blogs/1-year-of-linux/</link>
+        <guid isPermaLink="true">https://nothr.in/blogs/1-year-of-linux/</guid>
+        <pubDate>Wed, 28 Feb 2024 00:00:00 GMT</pubDate>
+        <atom:updated>2024-02-28T00:00:00+00:00</atom:updated>
+        <description><![CDATA[One Year of Using Linux]]></description>
+        
+        <dc:creator>Harshith reddy (harshith@nothr.in)</dc:creator>
+    </item>
+    <item>
+        <title>Switching back to Open source</title>
+        <link>https://nothr.in/blogs/switching-back-to-open-source/</link>
+        <guid isPermaLink="true">https://nothr.in/blogs/switching-back-to-open-source/</guid>
+        <pubDate>Sun, 12 Nov 2023 00:00:00 GMT</pubDate>
+        <atom:updated>2023-11-12T00:00:00+00:00</atom:updated>
+        <description><![CDATA[Switching back to Open Source]]></description>
+        
+        <dc:creator>Harshith reddy (harshith@nothr.in)</dc:creator>
+    </item>
+</channel>
+</rss>

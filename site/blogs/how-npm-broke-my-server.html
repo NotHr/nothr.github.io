@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How NPM broke my server</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Blog RSS" href="/rss.xml" />
+    <link rel="canonical" href="https://nothr.in/blogs/how-npm-broke-my-server/">
+  </head>
+  <body>
+    <nav>
+      <h1><a class="title" href="/">Harshith reddy</a></h1>
+      <br />
+      <i
+        >"A man with binary answer trying to be a constant rather being a
+        variable"</i
+      >
+      <hr />
+      <ul>
+        <li><a href="/blogs.html">Blog</a></li>
+        <li><a href="/now.html">Now</a></li>
+        <li><a href="mailto:harshith@nothr.in">Email</a></li>
+        <li><a href="/resume.pdf">Resume</a></li>
+        <li><a href="/links.html">Links</a></li>
+      </ul>
+      <hr />
+    </nav>
+    <main><article class="post">
+  <h1>How NPM broke my server</h1>
+<div class="page-meta"><p class="meta">Published on: <time datetime="2024-10-20T00:00:00+05:30">Oct 20, 2024</time> by <strong>Harshith reddy</strong></p></div>
+
+<h1 id="how-npm-broke-my-server">How NPM broke my server</h1>
+<p>I own a small <strong>1vCPU</strong> and <strong>1GB</strong> RAM
+Digital Ocean Droplet. Which costs me around 500rs per month.</p>
+<p>Last week I was trying to build a Documentation website with <a
+href="https://docusaurus.io/">Docusaurus</a> for a project. I pushed the
+project to GitHub and cloned it to my server.</p>
+<p>Then I started installing with npm. I ran <code>npm install</code>
+and it started installing the dependencies. After a few minutes, I got
+an error saying that the server is out of memory. I was surprised
+because I have only 1GB of RAM and the server was not doing anything
+else. The CPU and Disk usage was very high.</p>
+<p>I checked the memory usage with <code>htop</code>. But I couldn’t
+figure it out because the server was unresponsive. I had to reboot the
+server to get it back online.</p>
+<p>I tried to install the dependencies again, but the same thing
+happened. I was frustrated and started searching for the issue. I found
+that npm uses a lot of memory to install the dependencies. I tried to
+increase the swap memory, but it didn’t help.</p>
+<p>Then I was fed up using npm and according to a few reddit posts they
+mentioned that <code>pnpm</code> is a good alternative. So I installed
+pnpm with <code>npm install -g pnpm</code>. It worked and I tried to
+install the dependencies with <code>pnpm install</code>. It worked like
+a charm.</p>
+<h2 id="reason-behind-the-issue">Reason behind the issue</h2>
+<ul>
+<li>NPM installs dependencies in a flat structure. So if a package is
+used in multiple dependencies, it will be installed multiple times.</li>
+<li>NPM uses a lot of memory to install dependencies. So if you have a
+small server, it will run out of memory.</li>
+<li>NPM uses a lot of disk space. If you have limited disk space, it
+will run out.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<ul>
+<li>If you have a small server, use <code>pnpm</code> instead of
+<code>npm</code>.</li>
+<li>If you have a large server, <code>npm</code> works fine.</li>
+<li>If you want to save disk space, <code>yarn</code> or
+<code>pnpm</code> are good alternatives.</li>
+</ul>
+<h3 id="links">Links</h3>
+<ul>
+<li><a href="https://pnpm.io/">pnpm</a></li>
+<li><a href="https://docusaurus.io/">Docusaurus</a></li>
+<li><a href="https://www.digitalocean.com">Digital Ocean</a></li>
+</ul>
+
+</article>
+    </main>
+    <footer>
+      <hr />
+      Harshith reddy 2026
+      <hr />
+    </footer>
+  </body>
+</html>

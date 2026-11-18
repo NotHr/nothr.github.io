@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Ente Treasure Hunt — Write-Up!</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Blog RSS" href="/rss.xml" />
+    <link rel="canonical" href="https://nothr.in/blogs/ente-treasure-hunt-writeup/">
+  </head>
+  <body>
+    <nav>
+      <h1><a class="title" href="/">Harshith reddy</a></h1>
+      <br />
+      <i
+        >"A man with binary answer trying to be a constant rather being a
+        variable"</i
+      >
+      <hr />
+      <ul>
+        <li><a href="/blogs.html">Blog</a></li>
+        <li><a href="/now.html">Now</a></li>
+        <li><a href="mailto:harshith@nothr.in">Email</a></li>
+        <li><a href="/resume.pdf">Resume</a></li>
+        <li><a href="/links.html">Links</a></li>
+      </ul>
+      <hr />
+    </nav>
+    <main><article class="post">
+  <h1>The Ente Treasure Hunt — Write-Up!</h1>
+<div class="page-meta"><p class="meta">Published on: <time datetime="2026-04-07T00:00:00+05:30">Apr 07, 2026</time> by <strong>Harshith reddy</strong></p></div>
+
+<h1 id="the-ente-treasure-hunt-write-up">The Ente Treasure Hunt —
+Write-Up!</h1>
+<p>I was scrolling through Twitter and found this post from Ente. I was
+really excited about this so I wanted to give it a try.</p>
+<figure>
+<img src="/images/ente-treasure-hunt-writeup/01.png"
+alt="Ente Twitter post" />
+<figcaption aria-hidden="true">Ente Twitter post</figcaption>
+</figure>
+<p>I opened the link and it redirected me to an album full of rubber
+ducks, and there was the first clue.</p>
+<p><img src="/images/ente-treasure-hunt-writeup/02.png" /></p>
+<p>First clue:</p>
+<blockquote>
+<p>I am recording this currently from the Ente office. As you can see in
+the screen already, there are some 1000 duckies in there and each of
+them hold a location. So your task in this round is to actually find the
+ducky whose location is the place where I am at right now. So that will
+lead you to your next clue.</p>
+</blockquote>
+<p>So obviously, my location = Ente office location.</p>
+<p>Initially I thought the duck would be in an office environment or in
+office attire. Then I used the ente’s powerful search and tried
+searching “office” etc., but no luck.</p>
+<p>Then I thought about searching in metadata and found the location on
+maps.</p>
+<p><img src="/images/ente-treasure-hunt-writeup/03.png" /></p>
+<p>I opened my maps, checked the duck’s location in Bengaluru, and
+verified it with Google Maps</p>
+<p><img src="/images/ente-treasure-hunt-writeup/04.png" /></p>
+<p><img src="/images/ente-treasure-hunt-writeup/05.png" /></p>
+<p>and there was the next clue in the description, with a link to an
+Ente locker. with a link to ente locker link</p>
+<p><a href="https://share.ente.io/F3JZZ3PH7X#XaSQcjoH86sT"
+class="uri">https://share.ente.io/F3JZZ3PH7X#XaSQcjoH86sT</a></p>
+<p><img src="/images/ente-treasure-hunt-writeup/06.png" /></p>
+<p>I was really excited because the hunt creator was making me use all
+the Ente features. Being an Ente amateur self-hoster and a hardcore fan,
+this was easy and exciting for me.</p>
+<p>Now this time it’s a link to another album with a password. The hints
+were:</p>
+<pre><code>- It&#39;s a set of 6 numbers.
+
+- It&#39;s the longest timeout in the App Lock of Ente Photos, before logging you out.
+
+- you might want to change the unit</code></pre>
+<p>I thought: let’s go through the docs and find out about App Lock.</p>
+<p><img src="/images/ente-treasure-hunt-writeup/07.png" /></p>
+<p>My eyes went to Auto Lock because of the numbers: 0, 5s, 15s, 1m, 5m,
+30m. I entered all combinations of them: 0, 5, 15, 1, 5, 30. I also
+converted them to seconds: 0, 5, 15, 60, 300, 1800. I even tried the
+sum.</p>
+<p>Later I realised I was looking at it the wrong way. Auto Lock just
+locks the app after inactivity (being in the background), and if you
+have a PIN or biometric set, it simply unlocks the app again.</p>
+<p>So I had App Lock set to biometric — I changed it to a PIN-based
+system and tried entering the wrong PIN multiple times, which triggered
+the timeout. Then I searched the codebase for App Lock files and found
+this:</p>
+<p><code>2^(attemptCount - 5) * 30 * 1000</code></p>
+<p>After 5 attempts it gives a timeout, with a maximum of 10
+attempts:</p>
+<ul>
+<li>5th wrong attempt: 30s</li>
+<li>6th: 60s</li>
+<li>7th: 120s</li>
+<li>8th: 240s</li>
+<li>9th: 480s</li>
+<li>10th: logout</li>
+</ul>
+<p>So 480s = 8 minutes is the longest timeout. I tried it (I forgot the
+1st hint at first), then remembered they use <code>ms</code> — so
+<strong>480000</strong> — and it unlocked the album.</p>
+<p><a
+href="https://albums.ente.io/?t=CCSRC5KHX2#By1h8bPUMaYPFLVmM3dA9zAD7WkZz4MD5mJHDf7sETss"
+class="uri">https://albums.ente.io/?t=CCSRC5KHX2#By1h8bPUMaYPFLVmM3dA9zAD7WkZz4MD5mJHDf7sETss</a></p>
+<p><img src="/images/ente-treasure-hunt-writeup/08.png" /></p>
+<p>I saw the “Final Final” title and was happy. The next clue was about
+the flexible layout, and I was adjusting it to see if anything
+aligned.</p>
+<p><img src="/images/ente-treasure-hunt-writeup/09.png" /></p>
+<p>One link finally matched. I was lazy to extract the text and asked
+ChatGPT to do it, but it didn’t give the correct result, so I manually
+typed each character — and got a response saying something went
+wrong.</p>
+<p><a
+href="https://albums.ente.io/?t=DMTH3CYTAX#FFC1PtVw8N4nqGNiCj5NXPp1pHnEztsR3NYZeGy472QU"
+class="uri">https://albums.ente.io/?t=DMTH3CYTAX#FFC1PtVw8N4nqGNiCj5NXPp1pHnEztsR3NYZeGy472QU</a></p>
+<p><img src="/images/ente-treasure-hunt-writeup/10.png" /></p>
+<p>I thought there would be something in the network logs and searched
+through them, but found everything normal. I was about to give up — but
+then I thought: why not cross-verify again?</p>
+<p>And I found the culprit. I had accidentally typed <strong>N</strong>
+instead of <strong>M</strong>:</p>
+<p><s><code>...nqGNiCj5...</code></s> → <code>...nqGMiCj5...</code></p>
+<p>And voilà — I got the correct album link:</p>
+<p><a
+href="https://albums.ente.io/?t=DMTH3CYTAX#FFC1PtVw8N4nqGMiCj5NXPp1pHnEztsR3NYZeGy472QU"
+class="uri">https://albums.ente.io/?t=DMTH3CYTAX#FFC1PtVw8N4nqGMiCj5NXPp1pHnEztsR3NYZeGy472QU</a></p>
+<p><img src="/images/ente-treasure-hunt-writeup/11.png" /></p>
+<p>At first I saw it said 10 more albums and felt a little overwhelmed —
+but I was determined to find the next puzzle.</p>
+<p><img src="/images/ente-treasure-hunt-writeup/12.png" /></p>
+<p>I used Google Search for “Ente Himalaya” to search for the blog, and
+seeing the Himalayas and the 3-letter block, I thought it was
+<strong>Leh</strong> but was hesitant, so I checked their blog:</p>
+<p><a href="https://ente.com/blog/trips/"
+class="uri">https://ente.com/blog/trips/</a></p>
+<p>It had an album link to the timeline.</p>
+<p><img src="/images/ente-treasure-hunt-writeup/13.png" /></p>
+<p>Damn, I was right! I opened the link:</p>
+<p><a href="https://ente.io/leh" class="uri">https://ente.io/leh</a></p>
+<p>And got the Ente paste link to the treasure.</p>
+<p><img src="/images/ente-treasure-hunt-writeup/14.png" /></p>
+<p><img src="/images/ente-treasure-hunt-writeup/15.png" /></p>
+<p>I was happy that I was the first person to claim it. I truly
+experienced everything Ente has to offer across its features and
+products. I loved this!</p>
+<p><strong>P.S.</strong> If this is your first time hearing about Ente,
+check them out at <a href="https://ente.com"
+class="uri">https://ente.com</a> — you won’t regret it!</p>
+
+</article>
+    </main>
+    <footer>
+      <hr />
+      Harshith reddy 2026
+      <hr />
+    </footer>
+  </body>
+</html>

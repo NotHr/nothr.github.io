@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://nothr.in/</loc>
+        <lastmod>2026-04-07</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://nothr.in/blogs/ente-treasure-hunt-writeup/</loc>
+        <lastmod>2026-04-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://nothr.in/blogs/two-years-with-linux/</loc>
+        <lastmod>2025-08-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://nothr.in/blogs/how-npm-broke-my-server/</loc>
+        <lastmod>2024-10-20</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://nothr.in/blogs/1-year-of-linux/</loc>
+        <lastmod>2024-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://nothr.in/blogs/switching-back-to-open-source/</loc>
+        <lastmod>2023-11-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc> Harshith reddy - nothr</loc>
+        <lastmod>https://no</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc> Harshith reddy - nothr</loc>
+        <lastmod>https://no</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc> Harshith reddy - nothr</loc>
+        <lastmod>https://no</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc> Harshith reddy - nothr</loc>
+        <lastmod>https://no</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+</urlset>
