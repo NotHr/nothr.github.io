@@ -1,10 +1,10 @@
 ---
-title: Tools | Harshith reddy - nothr
+title: Tools | Harshith Reddy - nothr
 slug: tools
 ---
 
 # Tools I use
 
-- Operating System - Arch Linux
-- Window Manager - i3WM
-- Editor - Zed and vim
+- Operating System - NixOS
+- Window Manager - KDE
+- Editor - Neovim

@@ -13,10 +13,10 @@
   </head>
   <body>
     <nav>
-      <h1><a class="title" href="/">Harshith reddy</a></h1>
+      <h1><a class="title" href="/">Harshith Reddy</a></h1>
       <br />
       <i
-        >"A man with binary answer trying to be a constant rather being a
+        >"A man with binary answers trying to be a constant rather than a
         variable"</i
       >
       <hr />
@@ -37,7 +37,7 @@
 <h1 id="the-ente-treasure-hunt-write-up">The Ente Treasure Hunt —
 Write-Up!</h1>
 <p>I was scrolling through Twitter and found this post from Ente. I was
-really excited about this so I wanted to give it a try.</p>
+really excited about this, so I wanted to give it a try.</p>
 <figure>
 <img src="/images/ente-treasure-hunt-writeup/01.png"
 alt="Ente Twitter post" />
@@ -55,25 +55,25 @@ ducky whose location is the place where I am at right now. So that will
 lead you to your next clue.</p>
 </blockquote>
 <p>So obviously, my location = Ente office location.</p>
-<p>Initially I thought the duck would be in an office environment or in
-office attire. Then I used the ente’s powerful search and tried
-searching “office” etc., but no luck.</p>
+<p>Initially, I thought the duck would be in an office environment or in
+office attire. Then I used Ente’s powerful search and tried searching
+for “office”, etc., but had no luck.</p>
 <p>Then I thought about searching in metadata and found the location on
 maps.</p>
 <p><img src="/images/ente-treasure-hunt-writeup/03.png" /></p>
 <p>I opened my maps, checked the duck’s location in Bengaluru, and
-verified it with Google Maps</p>
+verified it with Google Maps.</p>
 <p><img src="/images/ente-treasure-hunt-writeup/04.png" /></p>
 <p><img src="/images/ente-treasure-hunt-writeup/05.png" /></p>
-<p>and there was the next clue in the description, with a link to an
-Ente locker. with a link to ente locker link</p>
+<p>The next clue was in the description, with a link to an Ente
+locker.</p>
 <p><a href="https://share.ente.io/F3JZZ3PH7X#XaSQcjoH86sT"
 class="uri">https://share.ente.io/F3JZZ3PH7X#XaSQcjoH86sT</a></p>
 <p><img src="/images/ente-treasure-hunt-writeup/06.png" /></p>
 <p>I was really excited because the hunt creator was making me use all
-the Ente features. Being an Ente amateur self-hoster and a hardcore fan,
-this was easy and exciting for me.</p>
-<p>Now this time it’s a link to another album with a password. The hints
+the Ente features. As an amateur Ente self-hoster and a hardcore fan, I
+found this easy and exciting.</p>
+<p>This time, it was a link to another album with a password. The hints
 were:</p>
 <pre><code>- It&#39;s a set of 6 numbers.
 
@@ -86,7 +86,7 @@ were:</p>
 30m. I entered all combinations of them: 0, 5, 15, 1, 5, 30. I also
 converted them to seconds: 0, 5, 15, 60, 300, 1800. I even tried the
 sum.</p>
-<p>Later I realised I was looking at it the wrong way. Auto Lock just
+<p>Later, I realised I was looking at it the wrong way. Auto Lock just
 locks the app after inactivity (being in the background), and if you
 have a PIN or biometric set, it simply unlocks the app again.</p>
 <p>So I had App Lock set to biometric — I changed it to a PIN-based
@@ -94,7 +94,7 @@ system and tried entering the wrong PIN multiple times, which triggered
 the timeout. Then I searched the codebase for App Lock files and found
 this:</p>
 <p><code>2^(attemptCount - 5) * 30 * 1000</code></p>
-<p>After 5 attempts it gives a timeout, with a maximum of 10
+<p>After 5 attempts, it gives a timeout, with a maximum of 10
 attempts:</p>
 <ul>
 <li>5th wrong attempt: 30s</li>
@@ -115,9 +115,9 @@ class="uri">https://albums.ente.io/?t=CCSRC5KHX2#By1h8bPUMaYPFLVmM3dA9zAD7WkZz4M
 the flexible layout, and I was adjusting it to see if anything
 aligned.</p>
 <p><img src="/images/ente-treasure-hunt-writeup/09.png" /></p>
-<p>One link finally matched. I was lazy to extract the text and asked
-ChatGPT to do it, but it didn’t give the correct result, so I manually
-typed each character — and got a response saying something went
+<p>One link finally matched. I was too lazy to extract the text and
+asked ChatGPT to do it, but it didn’t give the correct result, so I
+manually typed each character — and got a response saying something went
 wrong.</p>
 <p><a
 href="https://albums.ente.io/?t=DMTH3CYTAX#FFC1PtVw8N4nqGNiCj5NXPp1pHnEztsR3NYZeGy472QU"
@@ -134,8 +134,8 @@ instead of <strong>M</strong>:</p>
 href="https://albums.ente.io/?t=DMTH3CYTAX#FFC1PtVw8N4nqGMiCj5NXPp1pHnEztsR3NYZeGy472QU"
 class="uri">https://albums.ente.io/?t=DMTH3CYTAX#FFC1PtVw8N4nqGMiCj5NXPp1pHnEztsR3NYZeGy472QU</a></p>
 <p><img src="/images/ente-treasure-hunt-writeup/11.png" /></p>
-<p>At first I saw it said 10 more albums and felt a little overwhelmed —
-but I was determined to find the next puzzle.</p>
+<p>At first, I saw it said 10 more albums and felt a little overwhelmed
+— but I was determined to find the next puzzle.</p>
 <p><img src="/images/ente-treasure-hunt-writeup/12.png" /></p>
 <p>I used Google Search for “Ente Himalaya” to search for the blog, and
 seeing the Himalayas and the 3-letter block, I thought it was
@@ -146,7 +146,7 @@ class="uri">https://ente.com/blog/trips/</a></p>
 <p><img src="/images/ente-treasure-hunt-writeup/13.png" /></p>
 <p>Damn, I was right! I opened the link:</p>
 <p><a href="https://ente.io/leh" class="uri">https://ente.io/leh</a></p>
-<p>And got the Ente paste link to the treasure.</p>
+<p>And I got the Ente paste link to the treasure.</p>
 <p><img src="/images/ente-treasure-hunt-writeup/14.png" /></p>
 <p><img src="/images/ente-treasure-hunt-writeup/15.png" /></p>
 <p>I was happy that I was the first person to claim it. I truly
@@ -159,7 +159,7 @@ class="uri">https://ente.com</a> — you won’t regret it!</p>
 </article>
     </main>
     <footer>
-      <p>Harshith reddy 2026</p>
+      <p>Harshith Reddy 2026</p>
       <p>Original written content is licensed under
         <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
         Fonts and third-party material retain their own licenses.

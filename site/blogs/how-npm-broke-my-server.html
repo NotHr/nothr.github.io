@@ -13,10 +13,10 @@
   </head>
   <body>
     <nav>
-      <h1><a class="title" href="/">Harshith reddy</a></h1>
+      <h1><a class="title" href="/">Harshith Reddy</a></h1>
       <br />
       <i
-        >"A man with binary answer trying to be a constant rather being a
+        >"A man with binary answers trying to be a constant rather than a
         variable"</i
       >
       <hr />
@@ -35,16 +35,17 @@
 <div class="page-meta"><p class="meta">Published on: <time datetime="2024-10-20T00:00:00+05:30">Oct 20, 2024</time> by <strong>Harshith reddy</strong></p></div>
 
 <h1 id="how-npm-broke-my-server">How NPM broke my server</h1>
-<p>I own a small <strong>1vCPU</strong> and <strong>1GB</strong> RAM
-Digital Ocean Droplet. Which costs me around 500rs per month.</p>
-<p>Last week I was trying to build a Documentation website with <a
+<p>I own a small DigitalOcean Droplet with <strong>1 vCPU</strong> and
+<strong>1 GB</strong> of RAM, which costs me around Rs. 500 per
+month.</p>
+<p>Last week, I was trying to build a documentation website with <a
 href="https://docusaurus.io/">Docusaurus</a> for a project. I pushed the
 project to GitHub and cloned it to my server.</p>
 <p>Then I started installing with npm. I ran <code>npm install</code>
 and it started installing the dependencies. After a few minutes, I got
-an error saying that the server is out of memory. I was surprised
+an error saying that the server was out of memory. I was surprised
 because I have only 1GB of RAM and the server was not doing anything
-else. The CPU and Disk usage was very high.</p>
+else. CPU and disk usage were very high.</p>
 <p>I checked the memory usage with <code>htop</code>. But I couldn’t
 figure it out because the server was unresponsive. I had to reboot the
 server to get it back online.</p>
@@ -52,8 +53,8 @@ server to get it back online.</p>
 happened. I was frustrated and started searching for the issue. I found
 that npm uses a lot of memory to install the dependencies. I tried to
 increase the swap memory, but it didn’t help.</p>
-<p>Then I was fed up using npm and according to a few reddit posts they
-mentioned that <code>pnpm</code> is a good alternative. So I installed
+<p>By then, I was fed up with using npm, and a few Reddit posts
+mentioned that <code>pnpm</code> was a good alternative. So I installed
 pnpm with <code>npm install -g pnpm</code>. It worked and I tried to
 install the dependencies with <code>pnpm install</code>. It worked like
 a charm.</p>
@@ -84,7 +85,7 @@ will run out.</li>
 </article>
     </main>
     <footer>
-      <p>Harshith reddy 2026</p>
+      <p>Harshith Reddy 2026</p>
       <p>Original written content is licensed under
         <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
         Fonts and third-party material retain their own licenses.

@@ -1,5 +1,5 @@
 ---
-title: Links | Harshith reddy - nothr
+title: Links | Harshith Reddy - nothr
 slug: links
 ---
 

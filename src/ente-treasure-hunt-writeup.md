@@ -8,7 +8,7 @@ description: "How I solved Ente's hunt using metadata, app lock timeouts, and a 
 
 # The Ente Treasure Hunt — Write-Up!
 
-I was scrolling through Twitter and found this post from Ente. I was really excited about this so I wanted to give it a try.
+I was scrolling through Twitter and found this post from Ente. I was really excited about this, so I wanted to give it a try.
 
 ![Ente Twitter post](/images/ente-treasure-hunt-writeup/01.png)
 
@@ -22,27 +22,27 @@ First clue:
 
 So obviously, my location = Ente office location.
 
-Initially I thought the duck would be in an office environment or in office attire. Then I used the ente’s powerful search and tried searching “office” etc., but no luck.
+Initially, I thought the duck would be in an office environment or in office attire. Then I used Ente’s powerful search and tried searching for “office”, etc., but had no luck.
 
 Then I thought about searching in metadata and found the location on maps.
 
 ![](/images/ente-treasure-hunt-writeup/03.png)
 
-I opened my maps, checked the duck’s location in Bengaluru, and verified it with Google Maps
+I opened my maps, checked the duck’s location in Bengaluru, and verified it with Google Maps.
 
 ![](/images/ente-treasure-hunt-writeup/04.png)
 
 ![](/images/ente-treasure-hunt-writeup/05.png)
 
-and there was the next clue in the description, with a link to an Ente locker. with a link to ente locker link
+The next clue was in the description, with a link to an Ente locker.
 
 <https://share.ente.io/F3JZZ3PH7X#XaSQcjoH86sT>
 
 ![](/images/ente-treasure-hunt-writeup/06.png)
 
-I was really excited because the hunt creator was making me use all the Ente features. Being an Ente amateur self-hoster and a hardcore fan, this was easy and exciting for me.
+I was really excited because the hunt creator was making me use all the Ente features. As an amateur Ente self-hoster and a hardcore fan, I found this easy and exciting.
 
-Now this time it’s a link to another album with a password. The hints were:
+This time, it was a link to another album with a password. The hints were:
 
     - It's a set of 6 numbers.
 
@@ -56,13 +56,13 @@ I thought: let’s go through the docs and find out about App Lock.
 
 My eyes went to Auto Lock because of the numbers: 0, 5s, 15s, 1m, 5m, 30m. I entered all combinations of them: 0, 5, 15, 1, 5, 30. I also converted them to seconds: 0, 5, 15, 60, 300, 1800. I even tried the sum.
 
-Later I realised I was looking at it the wrong way. Auto Lock just locks the app after inactivity (being in the background), and if you have a PIN or biometric set, it simply unlocks the app again.
+Later, I realised I was looking at it the wrong way. Auto Lock just locks the app after inactivity (being in the background), and if you have a PIN or biometric set, it simply unlocks the app again.
 
 So I had App Lock set to biometric — I changed it to a PIN-based system and tried entering the wrong PIN multiple times, which triggered the timeout. Then I searched the codebase for App Lock files and found this:
 
 `2^(attemptCount - 5) * 30 * 1000`
 
-After 5 attempts it gives a timeout, with a maximum of 10 attempts:
+After 5 attempts, it gives a timeout, with a maximum of 10 attempts:
 
 - 5th wrong attempt: 30s
 - 6th: 60s
@@ -81,7 +81,7 @@ I saw the “Final Final” title and was happy. The next clue was about the fle
 
 ![](/images/ente-treasure-hunt-writeup/09.png)
 
-One link finally matched. I was lazy to extract the text and asked ChatGPT to do it, but it didn’t give the correct result, so I manually typed each character — and got a response saying something went wrong.
+One link finally matched. I was too lazy to extract the text and asked ChatGPT to do it, but it didn’t give the correct result, so I manually typed each character — and got a response saying something went wrong.
 
 <https://albums.ente.io/?t=DMTH3CYTAX#FFC1PtVw8N4nqGNiCj5NXPp1pHnEztsR3NYZeGy472QU>
 
@@ -99,7 +99,7 @@ And voilà — I got the correct album link:
 
 ![](/images/ente-treasure-hunt-writeup/11.png)
 
-At first I saw it said 10 more albums and felt a little overwhelmed — but I was determined to find the next puzzle.
+At first, I saw it said 10 more albums and felt a little overwhelmed — but I was determined to find the next puzzle.
 
 ![](/images/ente-treasure-hunt-writeup/12.png)
 
@@ -115,7 +115,7 @@ Damn, I was right! I opened the link:
 
 <https://ente.io/leh>
 
-And got the Ente paste link to the treasure.
+And I got the Ente paste link to the treasure.
 
 ![](/images/ente-treasure-hunt-writeup/14.png)
 
